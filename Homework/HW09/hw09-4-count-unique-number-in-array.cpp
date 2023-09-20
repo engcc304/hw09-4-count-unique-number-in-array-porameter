@@ -47,3 +47,37 @@
         7 -> 1 value.
         9 -> 2 values.
 */
+
+#include <stdio.h>
+
+int main() {
+    int N ;
+
+    // รับจำนวนอาเรย์ที่ต้องการกรอก
+    printf( "Input N : \n" ) ;
+    scanf( "%d" , &N ) ;
+
+    int Array[N] ;
+
+    // รับข้อมูลลงในอาเรย์
+    for ( int i = 0; i < N; i++ ) {
+        printf( "Element[%d] : \n" , i ) ;
+        scanf( "%d" , &Array[i] ) ;
+    }
+
+    // นับจำนวนชุดตัวเลขที่ซ้ำกัน
+    for ( int i = 0 ; i < N ; i++ ) {
+        int count = 1 ; // เริ่มนับจาก 1 เพราะตัวเองก็ถือว่าเป็นตัวเดียว
+        if ( Array[i] != -1 ) {
+            for ( int j = i + 1 ; j < N ; j++ ) {
+                if ( Array[i] == Array[j] ) {
+                    count++ ;
+                    Array[j] = -1 ; // แสดงว่าตัวเลขนี้ถูกนับแล้ว
+                }
+            }
+            printf( "%d -> %d value.\n" , Array[i] , count ) ; 
+        }
+    }
+
+    return 0 ;
+}
